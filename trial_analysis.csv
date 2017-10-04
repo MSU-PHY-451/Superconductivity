@@ -1,0 +1,4 @@
+,Al thick (nm),Evaporation Pressure (mbar),Evaporation time (min),Junction thick(nm),Pb thick (nm),R Al (Ohm),R Pb (Ohm),Result,Vacuum (mbar)
+1,150.0,0.15,10,119.0,202.0,0.0,0.0,Inconclusive. Did not measure chip resistance beforehand,1e-05
+2,179.0,0.15,18,101.0,202.0,9.4,64.0,No superconducting properties,1e-05
+3,154.0,0.3,20,119.0,202.0,6.0,460.0,V vs. I looks like a resistor,1e-05
