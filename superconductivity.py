@@ -11,17 +11,23 @@
 # uncertainties
 
 
-import SpinlabCF as cf
 import csv
 import numpy as np
 from scipy.optimize import curve_fit
 import matplotlib.pyplot as plt
+#import sys
+#
+#args = sys.argv[1:]
+#ch1= args[0]
+#ch2= args[1] 
+#out = args[2]
+#plotfile = args[3]
 def f(m,x,b):
     return m*x+b
 
-with open("Data Sets/Superconductivity/9-26/ch1.csv") as ch1, \
-     open("Data Sets/Superconductivity/9-26/ch2.csv") as ch2, \
-     open("Data Sets/Superconductivity/9-26/VI.csv", "w") as out:
+with open("Data Sets/Superconductivity/10-3/getwfm(27).isf") as ch1, \
+     open("Data Sets/Superconductivity/10-3/getwfm(28).isf") as ch2, \
+     open("Data Sets/Superconductivity/10-3/VI.csv", "w") as out:
     ch1reader = csv.reader(ch1)
     ch2reader = csv.reader(ch2)
     v_array = []
@@ -39,12 +45,12 @@ with open("Data Sets/Superconductivity/9-26/ch1.csv") as ch1, \
     i_array = np.array(i_array)
     #std = np.std(vi_array)
     popt,pcov = curve_fit(f,xdata=v_array,ydata=i_array) # optimal, covariance
-    plt.plot(v_array,i_array, 'b-', label='data')
-    plt.plot(v_array, f(v_array, *popt), 'r--', label='fit')
+    plt.plot(v_array,-i_array, 'b-', label='data')
+    plt.plot(v_array,-f(v_array, *popt), 'r--', label='fit')
     plt.xlabel("V (v)")
     plt.ylabel("I (A)")
     plt.legend()
-    plt.savefig('fit-plot.pdf')
+    plt.savefig("fit-plot-10-3.png")
 
 
 
